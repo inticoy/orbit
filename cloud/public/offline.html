@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="color-scheme" content="light">
+    <title>연결 확인 · Orbit</title>
+    <style>
+      * { box-sizing: border-box; }
+      html, body { overflow-x: clip; }
+      html { color: #16263d; background: #f1f5f9; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+      body {
+        margin: 0;
+        min-height: 100dvh;
+        display: grid;
+        place-items: center;
+        padding: max(24px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+        font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+        letter-spacing: -0.01em;
+        -webkit-font-smoothing: antialiased;
+        background:
+          radial-gradient(90% 40% at 85% 0%, rgba(255, 221, 236, 0.55), transparent 70%),
+          radial-gradient(120% 55% at 10% 0%, rgba(190, 226, 247, 0.9), transparent 75%),
+          #f1f5f9;
+      }
+      main {
+        width: 100%;
+        max-width: 400px;
+        min-width: 0;
+        padding: 32px 16px;
+        border: 1px solid white;
+        border-radius: 26px;
+        background: white;
+        box-shadow: 0 1px 2px rgba(22, 38, 61, 0.04), 0 10px 30px -12px rgba(22, 38, 61, 0.12);
+        text-align: center;
+      }
+      h1 { margin: 0; font-size: 18px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      p { margin: 12px 0 24px; color: #5f6f84; }
+      button {
+        min-height: 48px;
+        padding: 12px 24px;
+        border: 0;
+        border-radius: 999px;
+        color: white;
+        background: #16263d;
+        font: inherit;
+        font-weight: 600;
+        white-space: nowrap;
+        cursor: pointer;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+      }
+      button:active { opacity: 0.75; }
+      button:focus-visible { outline: 2px solid #2f80d1; outline-offset: 3px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>인터넷에 연결되지 않았어요</h1>
+      <p>연결되면 자동으로 다시 열려요</p>
+      <button type="button">다시 시도</button>
+    </main>
+    <script>
+      document.querySelector("button").addEventListener("click", () => location.reload());
+      window.addEventListener("online", () => location.reload());
+      document.addEventListener("touchstart", () => {}, { passive: true });
+    </script>
+  </body>
+</html>

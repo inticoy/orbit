@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+/* Orbit: iOS 26 system colors like the Orbit hub, light and dark. Grok Bot-style
+   layout (list · conversation · panel) lives in components/shell.tsx. */
+@theme {
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+
+  --color-app-ink: #000000;
+  --color-app-muted: #6c6c72;
+  --color-app-faint: #a1a1a8;
+  --color-app-line: rgba(60, 60, 67, 0.14);
+  --color-app-bg: #ffffff;
+  --color-app-side: #f5f5f7;
+  --color-app-card: #ffffff;
+  --color-app-fill: rgba(120, 120, 128, 0.12);
+  --color-app-bubble: #e9e9eb;
+  --color-app-accent: #007aff;
+  --color-app-danger: #ff3b30;
+  --color-app-warn: #c93400;
+  --color-app-ok: #248a3d;
+
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-float: 0 10px 30px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.06);
+
+  --radius-card: 18px;
+  --radius-row: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-app-ink: #f5f5f7;
+    --color-app-muted: #a1a1a8;
+    --color-app-faint: #6c6c72;
+    --color-app-line: rgba(235, 235, 245, 0.14);
+    --color-app-bg: #000000;
+    --color-app-side: #111113;
+    --color-app-card: #1c1c1e;
+    --color-app-fill: rgba(120, 120, 128, 0.24);
+    --color-app-bubble: #262628;
+    --color-app-accent: #0a84ff;
+    --color-app-warn: #ff9f0a;
+    --color-app-ok: #30d158;
+    color-scheme: dark;
+  }
+}
+
+:root { color:var(--color-app-ink); background:var(--color-app-bg); -webkit-text-size-adjust:100%; text-size-adjust:100%; }
+* { box-sizing:border-box; }
+html, body { min-height:100%; }
+html, body { overflow-x:clip; }
+body { margin:0; font-family:var(--font-sans); letter-spacing:-0.01em; -webkit-font-smoothing:antialiased; -webkit-touch-callout:none; }
+* { -webkit-tap-highlight-color:transparent; }
+button, a { touch-action:manipulation; }
+:focus-visible { outline:2px solid var(--color-app-accent); outline-offset:2px; }
+/* Text fields show focus with their own frame (ring), not the blue outline box. */
+textarea:focus-visible, input:focus-visible { outline:none; }
+::selection { background:color-mix(in srgb, var(--color-app-accent) 28%, transparent); }
+img, svg { -webkit-user-drag:none; user-drag:none; }
+
+/* Login and error screens: a plain page in the app's background. */
+.app-sky { background:var(--color-app-side); }
+
+/* Enter animations. CSS (fill backwards) rather than JS springs: if iOS pauses
+   the page mid-animation, the element still ends at its normal place. */
+@keyframes orbit-rise { from { transform:translateY(12px) scale(.98); opacity:.4; } }
+@keyframes orbit-slide { from { transform:translateX(18px); } }
+.anim-rise { animation:orbit-rise .3s cubic-bezier(.2,.8,.2,1) backwards; }
+.anim-slide { animation:orbit-slide .3s cubic-bezier(.2,.8,.2,1) backwards; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior:auto!important; transition-duration:.01ms!important; animation-duration:.01ms!important; }
+}

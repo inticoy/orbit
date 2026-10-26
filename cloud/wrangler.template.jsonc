@@ -1,0 +1,38 @@
+// Template: ./orbit build fills it from orbit.config.json into wrangler.jsonc (not in git).
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "{{worker}}",
+  "main": "custom-worker.ts",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "services": [
+    // OpenNext self-reference; the service name must match the worker name.
+    { "binding": "WORKER_SELF_REFERENCE", "service": "{{worker}}" }
+  ],
+  // The app's own login (lib/login-worker.ts) guards the workers.dev hostname.
+  // Version (preview) URLs stay off so there is only one public address to protect.
+  "workers_dev": true,
+  "preview_urls": false,
+  "observability": { "enabled": true },
+  // Every 5 minutes: due routines, jobs whose Mac engine stopped answering, login cleanup.
+  "triggers": { "crons": ["*/5 * * * *"] },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "{{database}}",
+      "database_id": "{{databaseId}}",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "vars": {
+    // Orbit has one person in it.
+    "OWNER_EMAILS": "{{owner}}",
+    // Web Push sender key (public half; the private JWK is the secret VAPID_PRIVATE_JWK).
+    "VAPID_PUBLIC_KEY": "{{vapidPublicKey}}"
+  }
+  // Secrets (./orbit setup puts them): VAPID_PRIVATE_JWK, ENGINE_TOKEN. Both also live in the Mac Keychain.
+}

@@ -1,0 +1,72 @@
+{
+  "tars": {
+    "name": "Tars",
+    "role": "심부름",
+    "color": "#48484a",
+    "shape": "chamfer",
+    "engine": "codex",
+    "intro": "뭐든 시켜 줘",
+    "web": true,
+    "access": "full",
+    "routines": []
+  },
+  "scouty": {
+    "name": "Scouty",
+    "role": "조사",
+    "color": "#af52de",
+    "shape": "magnifier",
+    "engine": "codex",
+    "intro": "알아봐 줘, 나오면 알려 줘",
+    "web": true,
+    "routines": [
+      {
+        "id": "scouty-track",
+        "title": "추적 확인",
+        "prompt": "기억의 \"추적 중\" 목록을 하나씩 웹에서 확인해. 지난번과 달라진 게 있으면 무엇이 바뀌었는지 출처와 함께 알려 주고 기억을 고쳐. 달라진 게 하나도 없으면 다른 말 없이 정확히 NO_CHANGE 라고만 답해.",
+        "times": "09:00,18:00",
+        "notify": "change"
+      }
+    ]
+  },
+  "scoop": {
+    "name": "Scoop",
+    "role": "뉴스",
+    "color": "#ff9500",
+    "shape": "burst",
+    "engine": "codex",
+    "intro": "관심 분야 뉴스",
+    "web": true,
+    "routines": [
+      {
+        "id": "scoop-digest",
+        "title": "오늘의 뉴스",
+        "prompt": "기억과 목표에 적힌 내 관심 분야에서 오늘 볼 만한 뉴스를 웹에서 찾아 정리해 줘. 전체 흐름 한 줄, 그다음 꼭 볼 것 3개(왜 중요한지 한 줄씩, 링크 포함). 관심 분야가 아직 없으면 무엇에 관심 있는지 물어봐.",
+        "times": "21:10",
+        "notify": "always"
+      }
+    ]
+  },
+  "polaris": {
+    "name": "Polaris",
+    "role": "브리핑",
+    "color": "#5856d6",
+    "shape": "star",
+    "engine": "codex",
+    "intro": "아침 브리핑",
+    "web": true,
+    "briefing": true,
+    "context": [
+      "dashboards",
+      "memory:scouty"
+    ],
+    "routines": [
+      {
+        "id": "polaris-morning",
+        "title": "아침 브리핑",
+        "prompt": "오늘 아침 브리핑을 써 줘. 아래 [대시보드] 숫자와 [Scouty 기억]의 추적 목록을 보고, 오늘 꼭 알아야 할 것 3가지 이내로. 필요한 뉴스는 웹에서 확인해.",
+        "times": "07:30",
+        "notify": "always"
+      }
+    ]
+  }
+}

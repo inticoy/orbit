@@ -1,0 +1,3 @@
+#!/bin/sh
+# Runs the Orbit CLI (cli/orbit.mjs) with Node 24+.
+exec node "$(dirname "$0")/cli/orbit.mjs" "$@"

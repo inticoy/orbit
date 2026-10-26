@@ -1,0 +1,8 @@
+node_modules/
+.DS_Store
+*.log
+*.tsbuildinfo
+
+# Your own Orbit lives outside git: the home folder and the pointer to it.
+home/
+.orbit-home

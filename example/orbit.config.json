@@ -1,0 +1,8 @@
+{
+  "owner": "",
+  "timezone": "Asia/Seoul",
+  "cloudflare": { "worker": "orbit", "database": "orbit" },
+  "satellites": ["tars", "scouty", "scoop", "polaris"],
+  "routines": [],
+  "plugins": []
+}

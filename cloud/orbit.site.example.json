@@ -1,0 +1,51 @@
+{
+  "url": "https://orbit.example.workers.dev",
+  "timezone": "Asia/Seoul",
+  "briefing": "polaris",
+  "satellites": [
+    {
+      "id": "tars",
+      "name": "Tars",
+      "role": "심부름",
+      "color": "#48484a",
+      "shape": "chamfer",
+      "engine": "codex",
+      "intro": "뭐든 시켜 줘",
+      "ready": true,
+      "dashboard": false
+    },
+    {
+      "id": "scouty",
+      "name": "Scouty",
+      "role": "조사",
+      "color": "#af52de",
+      "shape": "magnifier",
+      "engine": "codex",
+      "intro": "알아봐 줘, 나오면 알려 줘",
+      "ready": true,
+      "dashboard": false
+    },
+    {
+      "id": "scoop",
+      "name": "Scoop",
+      "role": "뉴스",
+      "color": "#ff9500",
+      "shape": "burst",
+      "engine": "codex",
+      "intro": "관심 분야 뉴스",
+      "ready": true,
+      "dashboard": false
+    },
+    {
+      "id": "polaris",
+      "name": "Polaris",
+      "role": "브리핑",
+      "color": "#5856d6",
+      "shape": "star",
+      "engine": "codex",
+      "intro": "아침 브리핑",
+      "ready": true,
+      "dashboard": false
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "orbit-cloud",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "db:migrate:local": "wrangler d1 migrations apply DB --local",
+    "db:migrate:remote": "wrangler d1 migrations apply DB --remote",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv --strict-vars=false cloudflare-env.d.ts"
+  },
+  "dependencies": {
+    "@simplewebauthn/browser": "13.3.0",
+    "@simplewebauthn/server": "13.3.3",
+    "lucide-react": "^1.33.0",
+    "mermaid": "11.12.0",
+    "motion": "^13.1.0",
+    "next": "16.4.3",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "react-markdown": "10.1.0",
+    "remark-cjk-friendly": "2.3.2",
+    "remark-gfm": "4.0.1",
+    "server-only": "^0.0.1"
+  },
+  "devDependencies": {
+    "@opennextjs/cloudflare": "1.20.13",
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "24.10.1",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "postcss": "^8.5.26",
+    "tailwindcss": "^4.3.3",
+    "typescript": "5.9.3",
+    "wrangler": "4.153.0"
+  },
+  "packageManager": "pnpm@10.34.6",
+  "engines": {
+    "node": ">=24.22.1"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp",
+      "workerd"
+    ]
+  }
+}
